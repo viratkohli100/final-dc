@@ -1,0 +1,18 @@
+exec('c:\scilab_project\user defined function\pskmod.sci');
+exec('c:\scilab_project\user defined function\qamm.sci');
+N = 4;
+M = 2^N;
+X = 0 : M-1;
+Z = pskmod(X,M);
+scf();
+subplot(1,2,1);
+scatter(real(Z),imag(Z),"fill");
+h=gca();
+h.data_bound=[-1.5,1.5,-1.5,1.5];
+xtitle('M-ary psk','in phase','quadrature');
+y=gammod(X,M);
+subplot(1,2,2);
+scatter(real(y),imag(y),"fill");
+h=gca();
+h.data_bounds = [-3.5,3.5,-3.5,3.5];
+xtitle('M-QAM','in phase','quadrature');
