@@ -1,0 +1,31 @@
+clc;
+close;
+clear;
+D = poly (0, 'D' );
+g = 1+D+0+D ^3;
+m = (D^3) *(1+0+0+ D^3); 
+[r,q] = pdiv (m,g);
+p = coeff (r);
+disp (r, ' remainder in polynomial form ' )
+disp (p, ' Parity bits are : ' )
+disp ( ' Table 8.3 Contents of the Shift Register in the Encoder of fig 8.7 for Message Sequence (1 0 0 1 ) ')
+disp ( '--------------------------------------------------------------------')
+disp ( ' Shift Input Register Contents ' )
+disp ( '-----------------------------------------------' )
+disp ( ' 1 1 1 1 0 ' )
+disp ( ' 2 0 0 1 1 ' )
+disp ( ' 3 0 1 1 1 ' )
+disp ( ' 4 1 0 1 1 ' )
+disp ( '--------------------------' )                       
+C1=0+D+D^2+D^3+0+0+D^6;
+C2=0+D+D^2+0+0+0+D^6;
+[r1,q1]=pdiv(C1,g);
+S1=coeff(r1);
+S1=modulo(S1,2);
+disp(r1,' remainder in polynomial form ')
+disp(S1,' Syndrome bits for error free codeword are : ')
+[r2,q2]=pdiv(C2,g);
+S2=coeff(r2);
+S2=modulo(S2,2);
+disp(r2,' remainder in polynomial form for erroredcodeword ')
+disp(S2,' Syndrome bits for erroredcodeword are : ')
